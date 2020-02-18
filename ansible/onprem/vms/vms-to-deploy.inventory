@@ -1,0 +1,11 @@
+[bootstrap]
+bootstrap-0 guest_custom_ip='192.168.101.100' guest_notes='bootstrap' guest_id='bs-1' guest_custom_vcpu='2' guest_custom_vmem='4' target_esxi_hostname='192.168.101.251'
+
+[masters]
+control-plane-0 guest_custom_ip='192.168.101.101' guest_notes='control plane 0' guest_id='cp-0' guest_custom_vcpu='4' guest_custom_vmem='16' target_esxi_hostname='192.168.101.251'
+control-plane-1 guest_custom_ip='192.168.101.102' guest_notes='control plane 1' guest_id='cp-1' guest_custom_vcpu='4' guest_custom_vmem='16' target_esxi_hostname='192.168.101.252'
+control-plane-2 guest_custom_ip='192.168.101.103' guest_notes='control plane 2' guest_id='cp-2' guest_custom_vcpu='4' guest_custom_vmem='16' target_esxi_hostname='192.168.101.253'
+
+[workers]
+compute-1 guest_custom_ip='192.168.101.104' guest_notes='compute 0' guest_id='compute-0' guest_custom_vcpu='2' guest_custom_vmem='8' target_esxi_hostname='192.168.101.253'
+compute-2 guest_custom_ip='192.168.101.105' guest_notes='compute 1' guest_id='compute-1' guest_custom_vcpu='2' guest_custom_vmem='8' target_esxi_hostname='192.168.101.252'

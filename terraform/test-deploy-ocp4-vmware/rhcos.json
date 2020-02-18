@@ -1,0 +1,26 @@
+{
+    "DiskProvisioning": "flat",
+    "IPAllocationPolicy": "dhcpPolicy",
+    "IPProtocol": "IPv4",
+    "InjectOvfEnv": false,
+    "MarkAsTemplate": false,
+    "Name": "rhcos-4.3.0",
+    "NetworkMapping": [
+        {
+            "Name": "No VLAN",
+            "Network": "No VLAN"
+        }
+    ],
+    "PowerOn": false,
+    "PropertyMapping": [
+        {
+            "Key": "guestinfo.ignition.config.data",
+            "Value": ""
+        },
+        {
+            "Key": "guestinfo.ignition.config.data.encoding",
+            "Value": ""
+        }
+    ],
+    "WaitForIP": false
+}

@@ -1,0 +1,14 @@
+---
+# Remove VMs using Ansible 'vmware_guest' module
+- name: Remove VMs
+  vmware_guest:
+    datacenter: "{{ deploy_vsphere_datacenter }}"
+    hostname: '{{ deploy_vsphere_host }}'
+    username: '{{ deploy_vsphere_user }}'
+    password: '{{ deploy_vsphere_password }}'
+    validate_certs: no
+    cluster: '{{ deploy_vsphere_cluster }}'
+    name: '{{ inventory_hostname }}'
+    state: absent
+    force: yes
+  delegate_to: localhost

@@ -1,0 +1,116 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: ssh
+  tasks:
+  - name: Add group "nixadmins" to remote server
+    group:
+      name: nixadmins
+      gid: 2010
+      state: present
+
+  - name: Add group "Office" to remote server
+    group:
+      name: office
+      gid: 2011
+      state: present
+
+  - name: Add group "Warehouse" to remote server
+    group:
+      name: warehouse
+      gid: 2012
+      state: present 
+
+  - name: Add user "sysadmin" to remote server
+    user:
+      name: sysadmin
+      password: sysadmin
+      comment: "Privileged User"
+      uid: 2001
+      group: nixadmins
+      groups: office,warehouse
+      append: yes
+      shell: /bin/bash
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+      ssh_key_file: .ssh/id_rsa
+
+  - name: Add user "ansibled" to remote server
+    user:
+      name: ansibled
+      password: ansibled
+      comment: "Privileged User"
+      uid: 2002
+      group: nixadmins
+      groups: office,warehouse
+      append: yes
+      shell: /bin/bash
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+      ssh_key_file: .ssh/id_rsa    
+
+  - name: Add user "centos" to remote server
+    user:
+      name: centos
+      password: centos
+      comment: "Privileged User"
+      uid: 2003
+      group: nixadmins
+      groups: office,warehouse
+      append: yes
+      shell: /bin/bash
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+      ssh_key_file: .ssh/id_rsa   
+
+  - name: Add user "EdMcbee" to remote server
+    user:
+      name: edmcbee
+      password: edmcbee
+      comment: "Accountant UnPrivileged User"
+      uid: 2004
+      group: office
+      shell: /bin/bash
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+      ssh_key_file: .ssh/id_rsa
+
+  - name: Add user "AlexaColina" to remote server
+    user:
+      name: lexcolin
+      password: lexcolin
+      comment: "Content creator UnPrivileged User"
+      uid: 2005
+      group: office
+      shell: /bin/bash
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+      ssh_key_file: .ssh/id_rsa
+
+  - name: Add user "MikeColoma" to remote server
+    user:
+      name: mikecol
+      password: mikecol
+      comment: "Unix Admin Privileged User"
+      uid: 2006
+      group: nixadmins
+      groups: office,warehouse
+      append: yes
+      shell: /bin/sh
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+      ssh_key_file: .ssh/id_rsa
+
+
+  - name: Add user "Guest001" to remote server
+    user:
+      name: guest001
+      comment: "Temp account"
+      uid: 2007
+      group: warehouse
+      shell: /bin/bash
+      createhome: no
+      password: ''
+      expires: 1525198731
+
+

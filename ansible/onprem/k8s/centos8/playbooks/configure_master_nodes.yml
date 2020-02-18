@@ -1,0 +1,32 @@
+---
+- hosts: master
+  vars_files:
+  - ../env_variables
+  tasks:
+  - name: Pulling images required for setting up a Kubernetes cluster
+    shell: kubeadm config images pull
+
+  - name: Resetting kubeadm
+    shell: kubeadm reset -f
+    register: output
+
+  - name: Initializing Kubernetes cluster
+    shell: kubeadm init --apiserver-advertise-address {{ad_addr}} --pod-network-cidr={{cidr_v}}
+    register: output
+
+  - name: Storing Logs and Generated token for future purpose.
+    local_action: copy content={{ output.stdout }} dest=/root/{{ token_file }}
+
+  - name: Copying required files
+    shell: |
+     mkdir -p /root/.kube
+     sudo cp -f /etc/kubernetes/admin.conf /root/.kube/config
+     sudo chown $(id -u):$(id -g) /root/.kube/config
+
+#  - name: Install Pod Network Add-on
+#    command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+<<<<<<< HEAD
+# kubeadm init --apiserver-advertise-address 192.168.101.51 --pod-network-cidr=10.244.0.0/16
+=======
+# kubeadm init --apiserver-advertise-address 192.168.101.51 --pod-network-cidr=10.244.0.0/16cd 
+>>>>>>> c19805d85a19fb551499010e989b6bbc97bc4099

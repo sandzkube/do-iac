@@ -1,0 +1,26 @@
+{
+    "DiskProvisioning": "flat",
+    "IPAllocationPolicy": "dhcpPolicy",
+    "IPProtocol": "IPv4",
+    "InjectOvfEnv": false,
+    "MarkAsTemplate": false,
+    "Name": null,
+    "NetworkMapping": [
+        {
+            "Name": "VM Network",
+            "Network": ""
+        }
+    ],
+    "PowerOn": false,
+    "PropertyMapping": [
+        {
+            "Key": "guestinfo.ignition.config.data",
+            "Value": ""
+        },
+        {
+            "Key": "guestinfo.ignition.config.data.encoding",
+            "Value": ""
+        }
+    ],
+    "WaitForIP": false
+}

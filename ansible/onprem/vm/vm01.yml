@@ -1,0 +1,30 @@
+---
+- name: Create a VM via ansible from a template
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  gather_facts: no
+  vars:
+    vcenter_server: "192.168.101.254"
+    vcenter_user: "administrator@vsphere.local"
+    vcenter_pass: "P@ssw0rd"
+    datacenter_name: "Datacenter"
+    cluster_name: "Cluster"
+  tasks:
+  - name: Clone the template
+    vmware_guest:
+      hostname: "{{ vcenter_server }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: False
+      name: edm01      
+      template: template_el7
+      datacenter: "{{ datacenter_name }}"
+      folder: /{{ datacenter_name }}/vm
+      cluster: "{{ cluster_name }}"
+      state: poweredon
+      wait_for_ip_address: yes
+
+
+      
+      

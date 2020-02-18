@@ -1,0 +1,25 @@
+- name: Remove virtual machine
+  gather_facts: no
+  vars:
+    vcenter_server: "192.168.101.254"
+    vcenter_user: "administrator@vsphere.local"
+    vcenter_pass: "P@ssw0rd"
+    datacenter_name: "Datacenter"
+    cluster_name: "DevOps"
+  hosts: localhost
+  tasks:
+    - set_fact:
+        vm_name: "VM-Centos-01"
+        datacenter: "Datacenter"
+    - name: Remove "{{ vm_name }}"
+      vmware_guest:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: no
+        cluster: "DevOps"
+        name: "{{ vm_name }}"
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: facts

@@ -1,0 +1,23 @@
+# Infrastructure
+# - Defines the vCenter / vSphere environment
+deploy_vsphere_host: '192.168.101.254'
+deploy_vsphere_user: 'administrator@vsphere.local'
+deploy_vsphere_password: 'P@ssw0rd'
+deploy_vsphere_datacenter: 'Datacenter'
+deploy_vsphere_folder: '/Datacenter/vm'
+deploy_vsphere_cluster: 'devops'
+deploy_vsphere_datastore: 'DevOps'
+
+# Guest
+# - Describes virtual machine common options
+guest_network: 'No VLAN'
+guest_netmask: '255.255.255.0'
+guest_gateway: '192.168.101.12'
+guest_dns_server: '192.168.101.5'
+guest_domain_name: 'sandz2.com.ph'
+guest_storage: '120'
+guest_vcpu: '2'
+memory_gb: 'guest_custom_vmem'
+guest_template: 'rhcos-4.3.0'
+guest_netip_assign_type: 'dhcp'
+guest_storage_type: 'thin'
