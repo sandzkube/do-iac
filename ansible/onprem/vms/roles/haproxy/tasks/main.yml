@@ -1,13 +1,26 @@
 ---
--   name: install haproxy
-    yum: name=haproxy state=present
-    tags: haproxy
+- name: install HAProxy
+  become: yes
+  yum: name=haproxy state=present
+  tags: HAProxy
 
--   name: configure haproxy
-    template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
-    notify: reload haproxy
-    tags: haproxy
+#- name: configure haproxy
+#  become: yes
+#  template: src=../templates/haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+#  notify: reload haproxy
+#  tags: haproxy
 
--   name: start haproxy
+- name: Configure HAProxy
+  template:
+    src: ../templates/haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+  - Restart HAProxy    
+
+-   name: start HAProxy
+    become: yes
     service: name=haproxy state=running
-    tags: haproxy
+    tags: HAProxy

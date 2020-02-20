@@ -1,0 +1,32 @@
+apiVersion: v1
+## The base domain of the cluster. All DNS records will be sub-domains of this base and will also include the cluster name.
+baseDomain: sandz2.com.ph
+compute:
+- name: worker
+  replicas: 1
+controlPlane:
+  name: master
+  replicas: 3
+metadata:
+  ## The name for the cluster
+  name: kube
+networking:
+  machineNetwork:
+  - cidr: "192.168.101.100/30"  
+platform:
+  vsphere:
+    ## The hostname or IP address of the vCenter
+    vCenter: Vcenterdevops.sandz.com.ph
+    ## The name of the user for accessing the vCenter
+    username: administrator@vsphere.local
+    ## The password associated with the user
+    password: P@ssw0rd
+    ## The datacenter in the vCenter
+    datacenter: Datacenter
+    ## The default datastore to use.
+    defaultDatastore: DevOps
+## The pull secret that provides components in the cluster access to images for OpenShift components.
+pullSecret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K2VkbWFjYWJlYmUxbnFmd3IxYTJzMWpjNjhqb3o5ZGdyYm8zZW86VTM3SVlGU1JYWDNVT09YWERRNE9XVU5FT0lDUjVXT082Wk1LTVkySjk4VUdSSloxVUpRMUtSU0pTR1dZSlkxUw==","email":"edmacabebe@gmail.com"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K2VkbWFjYWJlYmUxbnFmd3IxYTJzMWpjNjhqb3o5ZGdyYm8zZW86VTM3SVlGU1JYWDNVT09YWERRNE9XVU5FT0lDUjVXT082Wk1LTVkySjk4VUdSSloxVUpRMUtSU0pTR1dZSlkxUw==","email":"edmacabebe@gmail.com"},"registry.connect.redhat.com":{"auth":"NTEyMTM2Njl8dWhjLTFOcWZ3cjFhMlMxakM2OEpPWjlER3JibzNFbzpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSTFaak0wWkdFNU5ETmxNVFEwWmpRME9ETm1ObUV3TWpaak1USTVZMlEyTlNKOS5kOC0xZWl0RHpaenNtbTlvTnF6NEJaQmJMR1B5YUkzNUxSRmNJbG0zNWhWcHN0QUVrZGdWLU9va1RwV0JnQXU0STd0blpLVmdiV2ZObGprWHFfdlRFczRvVlpYVXdCY1EyODB5MzlPZ2otSVB2Q3R0aXdoQ0FGaGROaHpxVWZLOFBNOUtJRXQ2UW9qd2dxWk5iRDcwalJ3MF80OEhYZDEtdlpBd2ZWenAxTGRJZjYyZHBZZmUwQXFiRWNreVFETXJSR3dJVUpMc2VHSHd2NVJpeDlqTmF1dE5yMWNMcEg2RUJvNGpyajBHc0NjUFQ5ZU41TXhFYTNWNy1lRnFSWUNwNGhVVmlMT3pOT1VlU1VHRGVGMFoweUN2S2ZMeFRBb3BZNXVPd0tZTnBHMmw1QzdYdXZ0Y2VVRGV5OVUwUWt0VXdhbm12RFRmcXNtMDl5Q1FBOE5wd0xKUnhKNEE4anphS0NxTU52d3dFdzk5X0VNRXR0emJ2MTI4aDlSYmxPV3dERGUydzVrWURGMGNxZmlhckhxcGdScnBLc0REeFkwc2NoV1d0NlNTMVRKYjQySkhJVU9Td1dqc1dEMllrYUxPZVhHaC10TXhSZ1BvZzI3TmZlSnpFUmxoNnplYTQ0YTZIUVFjUTRPdzc1NTlvYnlGaUpEcE95RFUxYndCcXVZRjBiVWhTakZ1RkhER0NhRl8zRkFvOGhHXzUwcHVVTHNnbzdlQlcwdEZNWW5Idk83d0I1ckM3NFJYWlM5TjJmYmFvV1NobVJzQUc3QkhlOV9CQlR2dE1ndU1DZlYweDB5cGtQY0oxSllrRFhzQ3R3VkprTU1wQ3hPd19ORDRaaUdkRFpOeVZvS2N4SFZuRldzNFJUamRPWkJ0a09PenhwS2NYTFMyX0xHTkMyQQ==","email":"edmacabebe@gmail.com"},"registry.redhat.io":{"auth":"NTEyMTM2Njl8dWhjLTFOcWZ3cjFhMlMxakM2OEpPWjlER3JibzNFbzpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSTFaak0wWkdFNU5ETmxNVFEwWmpRME9ETm1ObUV3TWpaak1USTVZMlEyTlNKOS5kOC0xZWl0RHpaenNtbTlvTnF6NEJaQmJMR1B5YUkzNUxSRmNJbG0zNWhWcHN0QUVrZGdWLU9va1RwV0JnQXU0STd0blpLVmdiV2ZObGprWHFfdlRFczRvVlpYVXdCY1EyODB5MzlPZ2otSVB2Q3R0aXdoQ0FGaGROaHpxVWZLOFBNOUtJRXQ2UW9qd2dxWk5iRDcwalJ3MF80OEhYZDEtdlpBd2ZWenAxTGRJZjYyZHBZZmUwQXFiRWNreVFETXJSR3dJVUpMc2VHSHd2NVJpeDlqTmF1dE5yMWNMcEg2RUJvNGpyajBHc0NjUFQ5ZU41TXhFYTNWNy1lRnFSWUNwNGhVVmlMT3pOT1VlU1VHRGVGMFoweUN2S2ZMeFRBb3BZNXVPd0tZTnBHMmw1QzdYdXZ0Y2VVRGV5OVUwUWt0VXdhbm12RFRmcXNtMDl5Q1FBOE5wd0xKUnhKNEE4anphS0NxTU52d3dFdzk5X0VNRXR0emJ2MTI4aDlSYmxPV3dERGUydzVrWURGMGNxZmlhckhxcGdScnBLc0REeFkwc2NoV1d0NlNTMVRKYjQySkhJVU9Td1dqc1dEMllrYUxPZVhHaC10TXhSZ1BvZzI3TmZlSnpFUmxoNnplYTQ0YTZIUVFjUTRPdzc1NTlvYnlGaUpEcE95RFUxYndCcXVZRjBiVWhTakZ1RkhER0NhRl8zRkFvOGhHXzUwcHVVTHNnbzdlQlcwdEZNWW5Idk83d0I1ckM3NFJYWlM5TjJmYmFvV1NobVJzQUc3QkhlOV9CQlR2dE1ndU1DZlYweDB5cGtQY0oxSllrRFhzQ3R3VkprTU1wQ3hPd19ORDRaaUdkRFpOeVZvS2N4SFZuRldzNFJUamRPWkJ0a09PenhwS2NYTFMyX0xHTkMyQQ==","email":"edmacabebe@gmail.com"}}}''
+## The default SSH key that will be programmed for `core` user.
+sshKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDD6XSEq1Ulr2htuT+ycGORultlxoJJ61DaxC4KzWHSPM+rWiTlhXWMYQytKb4fHLMdj30uFTYMv5ty/ojEZSuZpHUKiC2zpfYY3+03OePv34veM2vhpHa704BZARW2RT/zo6SF3pkusxZXcIVPjGzT5a/8HFYvL0gGFgoTndBAsb+Re5maB0hLDD73MPmCSpMef9F9jj+kesJKeE7mhDBCRKWgVmyF7HYtULzmQf4gTqO6UiuU9I5u+cz3aLdQsaC1wdtfr9Y0EyaKum+1RwIFOtRUCjKL+YkSqEJtzgGdaXrT8MIODBIeBCGZiVhBHNsUwIU/e3vmJKpuIfehbQPF edmcbee@Eds-MacBook-Pro.local
+## ./openshift-install create cluster --log-level=debug 

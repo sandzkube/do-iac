@@ -87,7 +87,7 @@ module "compute" {
   num_cpu          = "${var.compute_num_cpus}"
 }
 
-module "dns" {
+/* module "dns" {
   source = "./route53"
 
   base_domain         = "${var.base_domain}"
@@ -99,3 +99,4 @@ module "dns" {
   compute_count       = "${var.compute_count}"
   compute_ips         = ["${module.compute.ip_addresses}"]
 }
+ */

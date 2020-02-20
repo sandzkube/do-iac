@@ -1,12 +1,15 @@
-[prod-k8s-master]
-do-kube-master-01
+[lb]
+lb.kube.sandz2.com.ph guest_custom_ip='192.168.101.99' guest_notes='haproxy lb' guest_id='lb.kube.sandz2.com.ph' guest_custom_vcpu='2' guest_custom_vmem='4' target_esxi_hostname='192.168.101.253'
+
+#[prod-k8s-master]
+#do-kube-master-01
 #do-kube-master-02
 #do-kube-master-03
 
-[prod-k8s-workers]
+#[prod-k8s-workers]
 #do-kube-worker-01
-do-kube-worker-02
+#do-kube-worker-02
 #do-kube-worker-03
-=======
-[prod-k8s-workers]
-do-kube-worker-04
+#=======
+#[prod-k8s-workers]
+#do-kube-worker-04

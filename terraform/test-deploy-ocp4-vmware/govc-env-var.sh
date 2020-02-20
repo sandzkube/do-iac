@@ -12,9 +12,13 @@ govc import.ova -options=rhcos.json -name=rhcos-4.3.0 \
  -pool=/Datacenter/host/devops/Resources/do ~/Downloads/rhcos-4.3.0-x86_64-vmware.ova
 govc vm.markastemplate do/rhcos-4.3.0
 scp bootstrap.ign root@192.168.101.22:/usr/share/nginx/html
+scp bootstrap.ign root@lb.kube.sandz2.com/ph:/var/www/html/
+curl -I http://lb.kube.sandz2.com.ph:8080/bootstrap.ign
 terraform init
 terraform plan
 terraform apply -auto-approve
+
+openshift-install --dir=. wait-for bootstrap-complete --log-level debug
 
 terraform destroy -auto-approve
 
